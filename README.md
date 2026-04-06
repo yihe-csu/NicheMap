@@ -1,10 +1,14 @@
 # **NicheMap: A Spatial Grid-Based Pipeline for Niche Identification in Xenium and Spatial Transcriptomics Data**
 
-
+<img src="./docs/imgs/NicheMap_logo.png" alt="figure1" style="zoom: 25%;" />
 
 ## Overview
 
 `NicheMap` is a interpretable pipeline for identifying spatial niches from single-cell or spot-level spatial transcriptomics data. It is particularly designed for datasets with explicit spatial coordinates, such as **10x Xenium**, and combines gene signature scoring, grid-based smoothing, local peak detection, and watershed segmentation to identify coherent niche regions.
+
+![figure1](./docs/imgs/NicheMap_overview_Fig_1.png)
+
+
 
 `NicheMap` consists of five connected stages: **gene signature scoring**, **spatial grid construction**, **seed detection**, **niche expansion by watershed**, and **cell-level mapping with result export**.
 
