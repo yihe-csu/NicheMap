@@ -216,8 +216,8 @@ NicheMap pipeline:  60%|██████    | 3/5 [00:12<00:08,  4.01s/step]
 
 You can prepare a future wiki or tutorial page such as:
 
-- **How to use NicheMap**
-- **Tutorial : Application on Xenium lung fibrosis dataset**
+- [How to use NicheMap](https://github.com/yihe-csu/NicheMap/wiki/How-to-use-NicheMap)
+- [Tutorial 1: Step by step analysis of Xenium lung data with NicheMap](https://github.com/yihe-csu/NicheMap/wiki/Tutorial-1:-Step-by-step-analysis-of-Xenium-lung-data-with-NicheMap)
 
 ## Reference and Citation
 
