@@ -1,0 +1,12 @@
+numpy>=1.23
+pandas>=1.5
+matplotlib>=3.6
+scanpy>=1.9
+anndata>=0.9
+scipy>=1.10
+scikit-image>=0.20
+zarr>=2.14
+tqdm>=4.65
+
+# optional
+matplotlib-scalebar
