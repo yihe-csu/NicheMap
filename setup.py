@@ -8,12 +8,15 @@ setup(
         "spatial transcriptomics",
         "xenium",
         "spatial niche",
+        "spatial neighborhood",
+        "cell type neighborhood",
         "watershed segmentation",
         "gene signature scoring",
     ],
     description=(
-        "A spatial grid-based pipeline for niche identification in Xenium "
-        "and spatial transcriptomics data"
+        "A spatial grid-based toolkit for niche identification and "
+        "cell-type neighborhood analysis in Xenium and spatial "
+        "transcriptomics data"
     ),
     license="MIT License",
     url="https://github.com/yihe-csu/NicheMap",
@@ -35,5 +38,7 @@ setup(
     ],
     extras_require={
         "plot": ["matplotlib-scalebar"],
+        "notebook": ["ipython"],
+        "all": ["matplotlib-scalebar", "ipython"],
     },
 )

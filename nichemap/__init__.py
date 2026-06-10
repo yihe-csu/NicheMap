@@ -12,6 +12,5 @@ __version__ = "0.1.0"
 from .utils import *
 from .nichemap import *
 from .plot import *
-from .utils import *
 from .preprocess import *
 from .neighborhood import *

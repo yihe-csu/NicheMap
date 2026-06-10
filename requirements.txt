@@ -10,3 +10,4 @@ tqdm>=4.65
 
 # optional
 matplotlib-scalebar
+ipython
