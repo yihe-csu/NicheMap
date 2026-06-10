@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68,<77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nichemap"
+version = "0.1.0"
+description = "A spatial grid-based toolkit for niche identification and cell-type neighborhood analysis in spatial transcriptomics"
+readme = "README_PYPI.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Yi He", email = "yihe_csu@csu.edu.cn" }
+]
+
+keywords = [
+    "spatial transcriptomics",
+    "xenium",
+    "spatial niche",
+    "spatial neighborhood",
+    "cell type neighborhood",
+    "watershed segmentation",
+    "gene signature scoring"
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+
+dependencies = [
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "matplotlib>=3.6",
+    "scanpy>=1.9",
+    "anndata>=0.9",
+    "scipy>=1.10",
+    "scikit-image>=0.20",
+    "zarr>=2.14",
+    "tqdm>=4.65"
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib-scalebar"]
+notebook = ["ipython"]
+all = ["matplotlib-scalebar", "ipython"]
+
+[project.urls]
+Homepage = "https://github.com/yihe-csu/NicheMap"
+Repository = "https://github.com/yihe-csu/NicheMap"
+Documentation = "https://nichemap-tutorials.readthedocs.io/en/latest/"
+Tutorials = "https://nichemap-tutorials.readthedocs.io/en/latest/"
+
+[tool.setuptools.packages.find]
+include = ["nichemap*"]

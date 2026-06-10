@@ -1,44 +1,4 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 
 
-setup(
-    name="nichemap",
-    version="0.1.0",
-    keywords=[
-        "spatial transcriptomics",
-        "xenium",
-        "spatial niche",
-        "spatial neighborhood",
-        "cell type neighborhood",
-        "watershed segmentation",
-        "gene signature scoring",
-    ],
-    description=(
-        "A spatial grid-based toolkit for niche identification and "
-        "cell-type neighborhood analysis in Xenium and spatial "
-        "transcriptomics data"
-    ),
-    license="MIT License",
-    url="https://github.com/yihe-csu/NicheMap",
-    author="Yi He",
-    author_email="yihe_csu@csu.edu.cn",
-    packages=find_packages(),
-    include_package_data=True,
-    platforms="any",
-    install_requires=[
-        "numpy>=1.23",
-        "pandas>=1.5",
-        "matplotlib>=3.6",
-        "scanpy>=1.9",
-        "anndata>=0.9",
-        "scipy>=1.10",
-        "scikit-image>=0.20",
-        "zarr>=2.14",
-        "tqdm>=4.65",
-    ],
-    extras_require={
-        "plot": ["matplotlib-scalebar"],
-        "notebook": ["ipython"],
-        "all": ["matplotlib-scalebar", "ipython"],
-    },
-)
+setup()

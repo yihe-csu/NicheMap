@@ -1,5 +1,7 @@
 # NicheMap
 
+[![Documentation Status](https://readthedocs.org/projects/nichemap-tutorials/badge/?version=latest)](https://nichemap-tutorials.readthedocs.io/en/latest/)
+
 **NicheMap** is a Python toolkit for spatial niche analysis in Xenium and other
 coordinate-resolved spatial transcriptomics data.
 
@@ -9,7 +11,7 @@ coordinate-resolved spatial transcriptomics data.
 
 ## What It Does
 
-NicheMap currently supports two complementary workflows:
+NicheMap supports two complementary workflows:
 
 - **Spatial niche identification** from marker-gene signature scores using
   grid smoothing, seed detection, watershed expansion, and cell-level niche
@@ -22,19 +24,24 @@ NicheMap currently supports two complementary workflows:
 
 ## Installation
 
-Create an environment and install NicheMap from the project root:
+Install from PyPI:
 
 ```bash
-conda create -n nichemap python=3.10
-conda activate nichemap
+pip install nichemap
+```
 
+For local development from source:
+
+```bash
+git clone https://github.com/yihe-csu/NicheMap.git
+cd NicheMap
 pip install -e .
 ```
 
-For dependency-only setup:
+Optional notebook and plotting extras:
 
 ```bash
-pip install -r requirements.txt
+pip install "nichemap[all]"
 ```
 
 ## Quick Start: Spatial Niche Identification
@@ -44,26 +51,20 @@ from pathlib import Path
 
 import nichemap as nm
 
-sample_prefix = "SSc_1_1_2"
-base_dir = r"F:\spatial_data_lung\SSc_1_1_2_raw"
-anno_file = r"F:\spatial_data_lung\ssc112_annotation_map.csv"
-gene_list = r"F:\spatial_data_lung\marker_genes\ECM-gene.csv"
-
-score_id = "ECM_score"
-out_dir = Path(r"F:\spatial_data_lung\Xenium_Result_data\SSc_1_1_2_result") / score_id
-out_dir.mkdir(parents=True, exist_ok=True)
-
-adata = nm.preprocess.load_xenium_data(base_dir=base_dir, anno_file=anno_file)
+adata = nm.preprocess.load_xenium_data(
+    base_dir=r"F:\spatial_data_lung\SSc_1_1_2_raw",
+    anno_file=r"F:\spatial_data_lung\ssc112_annotation_map.csv",
+)
 
 model = nm.NicheMap(
     adata=adata,
-    score_id=score_id,
-    sample_prefix=sample_prefix,
-    out_dir=out_dir,
+    score_id="ECM_score",
+    sample_prefix="SSc_1_1_2",
+    out_dir=Path("outputs/ECM_score"),
 )
 
 final_adata = model.run(
-    gene_list_csv=gene_list,
+    gene_list_csv=r"F:\spatial_data_lung\marker_genes\ECM-gene.csv",
     bins=300,
     peak_intensity=1.5,
     exp_intensity=1.0,
@@ -73,8 +74,6 @@ final_adata = model.run(
 ## Quick Start: Cell-Type Neighborhood Analysis
 
 ```python
-from pathlib import Path
-
 import scanpy as sc
 import nichemap.neighborhood as nh
 
@@ -86,7 +85,7 @@ results = nh.run_cell_type_neighborhood_analysis(
     hops=[1, 2, 3],
     structure_col="structure_label",
     cell_type_col="cell_type",
-    output_dir=Path("Tutorials/outputs/neighborhood"),
+    output_dir="outputs/neighborhood",
     selected_cell_types=None,
     make_plots=True,
     display_plots=True,
@@ -99,11 +98,11 @@ For the main Xenium pipeline, the raw input directory should contain:
 
 ```text
 base_dir/
-├── cell_feature_matrix/
-│   ├── matrix.mtx.gz
-│   ├── features.tsv.gz
-│   └── barcodes.tsv.gz
-└── cells.zarr
+|-- cell_feature_matrix/
+|   |-- matrix.mtx.gz
+|   |-- features.tsv.gz
+|   `-- barcodes.tsv.gz
+`-- cells.zarr
 ```
 
 For neighborhood analysis, the input `AnnData` object should contain:
@@ -125,6 +124,7 @@ NicheMap exports publication-oriented figures and tables, including:
 
 ## Tutorials
 
+- Online tutorials: https://nichemap-tutorials.readthedocs.io/en/latest/
 - Detailed usage guide: [How to use NicheMap](./How%20to%20use%20NicheMap.md)
 - Step-by-step Xenium analysis:
   [Tutorials/NicheMap_Lung_data_Xenium_step_by_step.py](./Tutorials/NicheMap_Lung_data_Xenium_step_by_step.py)
@@ -132,6 +132,17 @@ NicheMap exports publication-oriented figures and tables, including:
   [Tutorials/NicheMap_Lung_data_Xenium.py](./Tutorials/NicheMap_Lung_data_Xenium.py)
 - Neighborhood analysis notebook:
   [Tutorials/NicheMap_neighborhood_tutorial.ipynb](./Tutorials/NicheMap_neighborhood_tutorial.ipynb)
+
+## PyPI Packaging
+
+NicheMap uses `pyproject.toml` for package metadata and build configuration.
+To build and check the package locally:
+
+```bash
+python -m pip install --upgrade build twine
+python -m build
+python -m twine check dist/*
+```
 
 ## Citation
 
