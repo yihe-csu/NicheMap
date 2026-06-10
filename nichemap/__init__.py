@@ -7,10 +7,11 @@
 
 __author__ = "Yi He"
 __email__ = "yihe_csu@csu.edu.cn"
-__version__ = "1.1.1 "
+__version__ = "0.1.0"
 
 from .utils import *
 from .nichemap import *
 from .plot import *
 from .utils import *
 from .preprocess import *
+from .neighborhood import *
