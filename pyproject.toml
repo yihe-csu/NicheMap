@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nichemap"
-version = "0.1.0"
+version = "0.1.1"
 description = "A spatial grid-based toolkit for niche identification and cell-type neighborhood analysis in spatial transcriptomics"
 readme = "README_PYPI.md"
 requires-python = ">=3.10"
